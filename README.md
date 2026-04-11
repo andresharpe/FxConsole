@@ -7,7 +7,7 @@ Zero dependencies. Works out of the box with a built-in theme, or load custom pr
 ## Quick Start
 
 ```powershell
-Import-Module ./FxConsole.psd1
+Import-Module ./src/FxConsole/FxConsole.psd1
 Set-FxTheme  # uses built-in default theme
 
 Invoke-FxScript {
@@ -38,9 +38,9 @@ No external modules, no NuGet packages, no npm.
 
 ## Installation
 
-Copy `FxConsole.psm1` and `FxConsole.psd1` into your project. That's it.
+Copy the `src/FxConsole/` directory into your project. That's it.
 
-Optionally include `theme-config.json` for additional theme presets beyond the built-in default.
+The directory contains the module files and `theme-config.json` for additional theme presets beyond the built-in default.
 
 ## API Reference
 
@@ -99,6 +99,38 @@ Optionally include `theme-config.json` for additional theme presets beyond the b
 | `Write-FxCard 'Title' -Lines @(...)` | Bordered card with optional title |
 | `Write-FxPanel @('line1', 'line2')` | Auto-width bordered panel |
 
+### Tables & Data Display
+
+| Function | Description |
+|---|---|
+| `Write-FxTable -Headers @(...) -Rows @(...)` | Bordered table with auto-calculated column widths |
+| `Write-FxTable -BorderStyle Minimal` | Horizontal lines only, no vertical borders |
+| `Write-FxTable -Compact` | Reduced cell padding |
+| `Write-FxTable -Alignment @('Left','Right')` | Per-column alignment (Left, Right, Center) |
+| `Get-Process \| Write-FxTable` | Pipeline input — property names become headers |
+| `Write-FxTable ... -PassThru` | Return rendered lines as strings instead of writing |
+| `Write-FxGrid -Items @(...) -Columns 3` | Borderless multi-column layout |
+
+```powershell
+# Table with colored cells
+Write-FxTable -Headers @('Name','Status','Size') -Rows @(
+    ,@('api-server', (Format-Fx 'running' Success), '142 MB')
+    ,@('worker',     (Format-Fx 'stopped' Error),   '89 MB')
+)
+
+# Pipeline input
+Get-Process | Select-Object Name,CPU,WorkingSet | Write-FxTable
+
+# Dashboard grid
+Write-FxGrid -Columns 3 -Items @(
+    (Format-Fx 'CPU: 42%' Primary)
+    (Format-Fx 'MEM: 68%' Warning)
+    (Format-Fx 'DISK: 91%' Error)
+)
+```
+
+Border styles: `Rounded` (default), `Square`, `Double`, `Heavy`, `Minimal`, `None`
+
 ### Harness
 
 | Function | Description |
@@ -152,23 +184,27 @@ Preset names are validated dynamically, new presets work immediately.
 | purple | Violet Haze | pulse | star |
 | white | Clean White | dots | minimal |
 | rainbow | Prism | arrows | circle |
-| barbie | Barbie | pulse | star |
+| barbie | Barbie | bounce | star |
 
 ### Spinners
 
-9 built-in spinner styles. Themes reference them by name.
+13 built-in spinner styles. Themes reference them by name.
 
-| Id | Characters |
-|---|---|
-| bars | `▁▂▃▄▅▆▇█▇▆▅▄▃▁` |
-| braille | `⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏` |
-| orbit | `⯾⯽⯻⢿⡿⣟⣯⣷` |
-| dots | `⠈⠀⠁⠀` |
-| arrows | `←↖↑↗→↘↓↙` |
-| triangles | `◢◣◤◥` |
-| quarters | `▖▘▝▗` |
-| pulse | `◡⊙◠` |
-| classic | `-\|/` |
+| Id | Characters | Description |
+|---|---|---|
+| arc | `◜◝◞◟` | Quarter arc sweeping around |
+| arrows | `←↖↑↗→↘↓↙` | Directional compass rotation |
+| bars | `▁▂▃▄▅▆▇█▇▆▅▄▃▁` | Vertical block fill wave |
+| bounce | `⠁⠂⠄⡀⠄⠂` | Braille dot bouncing vertically |
+| braille | `⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏` | Classic braille dot spinner |
+| circle | `◐◓◑◒` | Half-filled circle rotation |
+| classic | `-\|/` | ASCII line rotation |
+| dots | `⠈⠀⠁⠀` | Minimal braille blink |
+| orbit | `⠁⠈⠐⠠⢀⡀⠄⠂` | Single dot circling braille grid |
+| pipe | `┤┘┴└├┌┬┐` | Box drawing corner rotation |
+| pulse | `◡⊙◠` | Pulsing lens |
+| quarters | `▖▘▝▗` | Quarter block rotation |
+| triangles | `◢◣◤◥` | Triangle rotation |
 
 ### Bullets
 

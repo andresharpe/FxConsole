@@ -3,7 +3,7 @@ param(
     [string]$Theme
 )
 
-Import-Module "$PSScriptRoot\..\FxConsole.psd1" -Force
+Import-Module "$PSScriptRoot\..\src\FxConsole\FxConsole.psd1" -Force
 Set-FxTheme $Theme
 
 Invoke-FxScript {
