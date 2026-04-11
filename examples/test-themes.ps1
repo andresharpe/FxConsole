@@ -4,7 +4,7 @@ param(
     [switch]$ShowAll
 )
 
-Import-Module "$PSScriptRoot\..\FxConsole.psd1" -Force
+Import-Module "$PSScriptRoot\..\src\FxConsole\FxConsole.psd1" -Force
 
 function Show-Demo {
     param([string]$PresetName)

@@ -34,39 +34,12 @@ What ships today.
 
 ---
 
-## v1.1 - Tables & Data Display
+## v1.1 - Tables & Data Display (Done)
 
-PowerShell's `Format-Table` truncates columns, converts to format objects (killing the pipeline), and has a 300ms async delay. FxConsole tables should be better in every way.
-
-### Write-FxTable
-
-```powershell
-Write-FxTable -Headers @('Name','Status','Size') -Rows @(
-    ,@('api-server', (Format-Fx 'running' Success), '142 MB')
-    ,@('worker',     (Format-Fx 'stopped' Error),   '89 MB')
-)
-```
-
-- Auto-calculated column widths (no truncation)
-- ANSI-aware width calculation (colored text measured correctly)
-- Per-cell, per-row, per-column color overrides
-- Border styles: Rounded, Square, Double, Heavy, Minimal, None
-- Column alignment: Left, Right, Center
-- Header separator row
-- Accepts pipeline input: `Get-Process | Select Name,CPU | Write-FxTable`
-- `-Compact` switch for reduced padding
-
-### Write-FxGrid
-
-Borderless multi-column layout for dashboard-style output.
-
-```powershell
-Write-FxGrid -Columns 3 -Items @(
-    (Format-Fx 'CPU: 42%' Primary)
-    (Format-Fx 'MEM: 68%' Warning)
-    (Format-Fx 'DISK: 91%' Error)
-)
-```
+- [x] `Write-FxTable` — auto-calculated column widths, ANSI-aware sizing, 6 border styles, column alignment, pipeline input, compact mode, PassThru
+- [x] `Write-FxGrid` — borderless multi-column dashboard layout with auto-width columns
+- [x] Pester 5 test suite (76 tests)
+- [x] Canonical PowerShell module layout (`src/FxConsole/Public/` + `Private/`)
 
 ---
 

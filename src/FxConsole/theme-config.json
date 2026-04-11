@@ -1,0 +1,524 @@
+{
+  "presets": {
+    "amber": {
+      "name": "Amber Classic",
+      "spinner": "bars",
+      "bullets": "scope",
+      "primary": [
+        232,
+        160,
+        48
+      ],
+      "primary-dim": [
+        184,
+        120,
+        32
+      ],
+      "secondary": [
+        156,
+        112,
+        40
+      ],
+      "tertiary": [
+        156,
+        112,
+        40
+      ],
+      "success": [
+        0,
+        255,
+        136
+      ],
+      "success-dim": [
+        0,
+        170,
+        92
+      ],
+      "error": [
+        232,
+        160,
+        48
+      ],
+      "warning": [
+        232,
+        160,
+        48
+      ],
+      "info": [
+        156,
+        112,
+        40
+      ],
+      "muted": [
+        112,
+        104,
+        92
+      ],
+      "bezel": [
+        56,
+        52,
+        44
+      ],
+      "bg-deep": [
+        5,
+        5,
+        8
+      ],
+      "bg-panel": [
+        10,
+        11,
+        15
+      ],
+      "bg-module": [
+        13,
+        14,
+        20
+      ],
+      "bg-screen": [
+        7,
+        10,
+        8
+      ]
+    },
+    "green": {
+      "name": "Matrix Green",
+      "spinner": "braille",
+      "bullets": "check",
+      "primary": [
+        0,
+        255,
+        136
+      ],
+      "primary-dim": [
+        0,
+        170,
+        92
+      ],
+      "secondary": [
+        0,
+        136,
+        72
+      ],
+      "tertiary": [
+        0,
+        136,
+        72
+      ],
+      "success": [
+        0,
+        255,
+        136
+      ],
+      "success-dim": [
+        0,
+        170,
+        92
+      ],
+      "error": [
+        0,
+        255,
+        136
+      ],
+      "warning": [
+        0,
+        255,
+        136
+      ],
+      "info": [
+        0,
+        136,
+        72
+      ],
+      "muted": [
+        88,
+        112,
+        96
+      ],
+      "bezel": [
+        40,
+        56,
+        46
+      ],
+      "bg-deep": [
+        3,
+        8,
+        5
+      ],
+      "bg-panel": [
+        6,
+        15,
+        10
+      ],
+      "bg-module": [
+        8,
+        20,
+        13
+      ],
+      "bg-screen": [
+        4,
+        12,
+        7
+      ]
+    },
+    "cyan": {
+      "name": "Cyan Ice",
+      "spinner": "orbit",
+      "bullets": "diamond",
+      "primary": [
+        95,
+        179,
+        179
+      ],
+      "primary-dim": [
+        70,
+        140,
+        140
+      ],
+      "secondary": [
+        56,
+        112,
+        112
+      ],
+      "tertiary": [
+        56,
+        112,
+        112
+      ],
+      "success": [
+        0,
+        255,
+        136
+      ],
+      "success-dim": [
+        0,
+        170,
+        92
+      ],
+      "error": [
+        95,
+        179,
+        179
+      ],
+      "warning": [
+        95,
+        179,
+        179
+      ],
+      "info": [
+        56,
+        112,
+        112
+      ],
+      "muted": [
+        92,
+        108,
+        108
+      ],
+      "bezel": [
+        42,
+        54,
+        54
+      ],
+      "bg-deep": [
+        4,
+        7,
+        7
+      ],
+      "bg-panel": [
+        8,
+        14,
+        14
+      ],
+      "bg-module": [
+        10,
+        18,
+        18
+      ],
+      "bg-screen": [
+        5,
+        11,
+        10
+      ]
+    },
+    "blue": {
+      "name": "Deep Blue",
+      "spinner": "quarters",
+      "bullets": "square",
+      "primary": [
+        68,
+        136,
+        255
+      ],
+      "primary-dim": [
+        48,
+        100,
+        200
+      ],
+      "secondary": [
+        40,
+        80,
+        160
+      ],
+      "tertiary": [
+        40,
+        80,
+        160
+      ],
+      "success": [
+        0,
+        255,
+        136
+      ],
+      "success-dim": [
+        0,
+        170,
+        92
+      ],
+      "error": [
+        68,
+        136,
+        255
+      ],
+      "warning": [
+        68,
+        136,
+        255
+      ],
+      "info": [
+        40,
+        80,
+        160
+      ],
+      "muted": [
+        96,
+        100,
+        116
+      ],
+      "bezel": [
+        44,
+        48,
+        58
+      ],
+      "bg-deep": [
+        4,
+        5,
+        10
+      ],
+      "bg-panel": [
+        8,
+        10,
+        18
+      ],
+      "bg-module": [
+        10,
+        13,
+        24
+      ],
+      "bg-screen": [
+        5,
+        7,
+        14
+      ]
+    },
+    "purple": {
+      "name": "Violet Haze",
+      "spinner": "pulse",
+      "bullets": "star",
+      "primary": [
+        170,
+        136,
+        255
+      ],
+      "primary-dim": [
+        130,
+        100,
+        200
+      ],
+      "secondary": [
+        104,
+        84,
+        160
+      ],
+      "tertiary": [
+        104,
+        84,
+        160
+      ],
+      "success": [
+        232,
+        160,
+        48
+      ],
+      "success-dim": [
+        184,
+        120,
+        32
+      ],
+      "error": [
+        170,
+        136,
+        255
+      ],
+      "warning": [
+        170,
+        136,
+        255
+      ],
+      "info": [
+        104,
+        84,
+        160
+      ],
+      "muted": [
+        104,
+        96,
+        116
+      ],
+      "bezel": [
+        50,
+        46,
+        58
+      ],
+      "bg-deep": [
+        6,
+        4,
+        10
+      ],
+      "bg-panel": [
+        12,
+        8,
+        18
+      ],
+      "bg-module": [
+        16,
+        11,
+        24
+      ],
+      "bg-screen": [
+        9,
+        6,
+        14
+      ]
+    },
+    "white": {
+      "name": "Clean White",
+      "spinner": "dots",
+      "bullets": "minimal",
+      "primary": [
+        220,
+        220,
+        228
+      ],
+      "primary-dim": [
+        180,
+        180,
+        188
+      ],
+      "secondary": [
+        160,
+        160,
+        168
+      ],
+      "tertiary": [
+        140,
+        140,
+        148
+      ],
+      "success": [
+        248,
+        250,
+        252
+      ],
+      "success-dim": [
+        210,
+        212,
+        216
+      ],
+      "error": [
+        220,
+        200,
+        200
+      ],
+      "warning": [
+        225,
+        220,
+        200
+      ],
+      "info": [
+        200,
+        210,
+        225
+      ],
+      "muted": [
+        110,
+        110,
+        118
+      ],
+      "bezel": [
+        56,
+        56,
+        62
+      ],
+      "bg-deep": [
+        6,
+        6,
+        8
+      ],
+      "bg-panel": [
+        12,
+        12,
+        16
+      ],
+      "bg-module": [
+        16,
+        16,
+        22
+      ],
+      "bg-screen": [
+        10,
+        10,
+        12
+      ]
+    },
+    "rainbow": {
+      "name": "Prism",
+      "spinner": "arrows",
+      "bullets": "circle",
+      "primary": [255, 100, 120],
+      "primary-dim": [200, 75, 90],
+      "secondary": [255, 180, 60],
+      "tertiary": [170, 120, 255],
+      "success": [80, 220, 160],
+      "success-dim": [55, 170, 120],
+      "error": [255, 80, 80],
+      "warning": [255, 210, 80],
+      "info": [80, 160, 255],
+      "muted": [140, 120, 140],
+      "bezel": [60, 50, 65],
+      "bg-deep": [6, 5, 8],
+      "bg-panel": [12, 10, 16],
+      "bg-module": [16, 14, 22],
+      "bg-screen": [9, 8, 12]
+    },
+    "barbie": {
+      "name": "Barbie",
+      "spinner": "pulse",
+      "bullets": "star",
+      "primary": [255, 105, 180],
+      "primary-dim": [220, 80, 150],
+      "secondary": [255, 150, 200],
+      "tertiary": [200, 80, 140],
+      "success": [255, 180, 210],
+      "success-dim": [220, 140, 175],
+      "error": [255, 70, 100],
+      "warning": [255, 200, 150],
+      "info": [180, 130, 220],
+      "muted": [180, 130, 160],
+      "bezel": [80, 45, 65],
+      "bg-deep": [10, 4, 8],
+      "bg-panel": [18, 8, 14],
+      "bg-module": [24, 10, 18],
+      "bg-screen": [14, 6, 10]
+    }
+  }
+}
