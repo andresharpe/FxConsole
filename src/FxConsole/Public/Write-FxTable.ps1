@@ -20,6 +20,8 @@ function Write-FxTable {
     Reduce cell padding from 1 space to 0.
     .PARAMETER HeaderColor
     Theme color name for header text.
+    .PARAMETER TextColor
+    Theme color name for data cell text. Defaults to Primary.
     .PARAMETER BorderColor
     Theme color name for border characters.
     .PARAMETER PassThru
@@ -42,6 +44,7 @@ function Write-FxTable {
         [string]$BorderStyle = 'Rounded',
         [switch]$Compact,
         [string]$HeaderColor = 'Primary',
+        [string]$TextColor = 'Primary',
         [string]$BorderColor = 'Bezel',
         [switch]$PassThru
     )
@@ -112,6 +115,7 @@ function Write-FxTable {
         # ── Theme colors ──
         $bc = $script:Theme[$BorderColor]; if (-not $bc) { $bc = $script:Theme['Bezel'] }
         $hc = $script:Theme[$HeaderColor]; if (-not $hc) { $hc = $script:Theme['Primary'] }
+        $tc = $script:Theme[$TextColor];   if (-not $tc) { $tc = $script:Theme['Primary'] }
         $r = $script:Theme.Reset
 
         # ── Output collector ──
@@ -134,7 +138,7 @@ function Write-FxTable {
             foreach ($row in $Rows) {
                 $cells = for ($c = 0; $c -lt $colCount; $c++) {
                     $cellText = if ($c -lt $row.Count) { [string]$row[$c] } else { '' }
-                    "${padStr}$(Get-FxPaddedText $cellText $colWidths[$c] $colAlign[$c])${padStr}"
+                    "${padStr}${tc}$(Get-FxPaddedText $cellText $colWidths[$c] $colAlign[$c])${r}${padStr}"
                 }
                 $output.Add($cells -join '  ')
             }
@@ -155,7 +159,7 @@ function Write-FxTable {
             foreach ($row in $Rows) {
                 $cells = for ($c = 0; $c -lt $colCount; $c++) {
                     $cellText = if ($c -lt $row.Count) { [string]$row[$c] } else { '' }
-                    "${padStr}$(Get-FxPaddedText $cellText $colWidths[$c] $colAlign[$c])${padStr}"
+                    "${padStr}${tc}$(Get-FxPaddedText $cellText $colWidths[$c] $colAlign[$c])${r}${padStr}"
                 }
                 $output.Add($cells -join '  ')
             }
@@ -187,7 +191,7 @@ function Write-FxTable {
             foreach ($row in $Rows) {
                 $cells = for ($c = 0; $c -lt $colCount; $c++) {
                     $cellText = if ($c -lt $row.Count) { [string]$row[$c] } else { '' }
-                    "${padStr}$(Get-FxPaddedText $cellText $colWidths[$c] $colAlign[$c])${padStr}"
+                    "${padStr}${tc}$(Get-FxPaddedText $cellText $colWidths[$c] $colAlign[$c])${r}${padStr}"
                 }
                 $output.Add("${bc}$($box.V)${r}$($cells -join "${bc}$($box.V)${r}")${bc}$($box.V)${r}")
             }
