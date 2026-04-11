@@ -39,6 +39,22 @@ function Show-Demo {
     Write-FxStep    'typescript'    -Prefix '     ' -Sub
     Complete-FxSection "INSTALL PACKAGES  $(Format-Fx '2 packages' Muted)" -SubCount 2
 
+    # Table
+    Write-FxBlankLine
+    Write-FxTable -Headers @('Service','Status','Uptime') -Rows @(
+        ,@('api-server', (Format-Fx 'running' Success),  '14d 2h')
+        ,@('worker',     (Format-Fx 'stopped' Error),    '0s')
+        ,@('scheduler',  (Format-Fx 'running' Success),  '14d 2h')
+    )
+
+    # Grid
+    Write-FxBlankLine
+    Write-FxGrid -Columns 3 -Items @(
+        "$(Format-Fx 'CPU:' Muted) $(Format-Fx '42%' Primary)"
+        "$(Format-Fx 'MEM:' Muted) $(Format-Fx '68%' Warning)"
+        "$(Format-Fx 'DISK:' Muted) $(Format-Fx '91%' Error)"
+    )
+
     # Card
     Write-FxBlankLine
     Write-FxCard 'Status' -Width 42 -Lines @(
