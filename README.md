@@ -184,7 +184,7 @@ Preset names are validated dynamically, new presets work immediately.
 | purple | Violet Haze | pulse | star |
 | white | Clean White | dots | minimal |
 | rainbow | Prism | arrows | circle |
-| barbie | Barbie | pulse | star |
+| barbie | Barbie | bounce | star |
 
 ### Spinners
 

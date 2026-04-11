@@ -502,7 +502,7 @@
     },
     "barbie": {
       "name": "Barbie",
-      "spinner": "pulse",
+      "spinner": "bounce",
       "bullets": "star",
       "primary": [255, 105, 180],
       "primary-dim": [220, 80, 150],
