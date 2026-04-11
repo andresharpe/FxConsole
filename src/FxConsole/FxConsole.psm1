@@ -19,13 +19,17 @@ $script:Bullets   = @{ Pending = ''; Done = ''; Sub = '' }
 $script:Spinners = @{
     bars      = @([char]0x2581,[char]0x2582,[char]0x2583,[char]0x2584,[char]0x2585,[char]0x2586,[char]0x2587,[char]0x2588,[char]0x2587,[char]0x2586,[char]0x2585,[char]0x2584,[char]0x2583,[char]0x2581)
     braille   = @([char]0x280B,[char]0x2819,[char]0x2839,[char]0x2838,[char]0x283C,[char]0x2834,[char]0x2826,[char]0x2827,[char]0x2807,[char]0x280F)
-    orbit     = @([char]0x2BFE,[char]0x2BFD,[char]0x2BFB,[char]0x28BF,[char]0x287F,[char]0x283F,[char]0x282F,[char]0x2837)
+    orbit     = @([char]0x2801,[char]0x2808,[char]0x2810,[char]0x2820,[char]0x2880,[char]0x2840,[char]0x2804,[char]0x2802)  # ⠁⠈⠐⠠⢀⡀⠄⠂ — single dot circling braille grid
     dots      = @([char]0x2808,[char]0x2800,[char]0x2801,[char]0x2800)
     arrows    = @([char]0x2190,[char]0x2196,[char]0x2191,[char]0x2197,[char]0x2192,[char]0x2198,[char]0x2193,[char]0x2199)
     triangles = @([char]0x25E2,[char]0x25E3,[char]0x25E4,[char]0x25E5)
     quarters  = @([char]0x2596,[char]0x2598,[char]0x259D,[char]0x2597)
     pulse     = @([char]0x25E1,[char]0x2299,[char]0x25E0)
     classic   = @('-', '\', '|', '/')
+    circle    = @([char]0x25D0,[char]0x25D3,[char]0x25D1,[char]0x25D2)              # ◐◓◑◒ — half-filled circle rotation
+    arc       = @([char]0x25DC,[char]0x25DD,[char]0x25DE,[char]0x25DF)              # ◜◝◞◟ — quarter arc sweeping around
+    bounce    = @([char]0x2801,[char]0x2802,[char]0x2804,[char]0x2840,[char]0x2804,[char]0x2802)  # ⠁⠂⠄⡀⠄⠂ — braille dot bouncing vertically
+    pipe      = @([char]0x2524,[char]0x2518,[char]0x2534,[char]0x2514,[char]0x251C,[char]0x250C,[char]0x252C,[char]0x2510)  # ┤┘┴└├┌┬┐ — box corner rotation
 }
 
 # ── Bullet sets ──

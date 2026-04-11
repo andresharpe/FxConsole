@@ -131,7 +131,7 @@ Describe 'Theme System' {
         It 'returns spinner objects with Id and Preview' {
             Set-FxTheme
             $spinners = Get-FxSpinners
-            $spinners.Count | Should -Be 9
+            $spinners.Count | Should -Be 13
             ($spinners.Id) | Should -Contain 'braille'
             ($spinners.Id) | Should -Contain 'bars'
             ($spinners.Id) | Should -Contain 'classic'

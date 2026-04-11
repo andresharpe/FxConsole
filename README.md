@@ -188,19 +188,23 @@ Preset names are validated dynamically, new presets work immediately.
 
 ### Spinners
 
-9 built-in spinner styles. Themes reference them by name.
+13 built-in spinner styles. Themes reference them by name.
 
-| Id | Characters |
-|---|---|
-| bars | `▁▂▃▄▅▆▇█▇▆▅▄▃▁` |
-| braille | `⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏` |
-| orbit | `⯾⯽⯻⢿⡿⣟⣯⣷` |
-| dots | `⠈⠀⠁⠀` |
-| arrows | `←↖↑↗→↘↓↙` |
-| triangles | `◢◣◤◥` |
-| quarters | `▖▘▝▗` |
-| pulse | `◡⊙◠` |
-| classic | `-\|/` |
+| Id | Characters | Description |
+|---|---|---|
+| arc | `◜◝◞◟` | Quarter arc sweeping around |
+| arrows | `←↖↑↗→↘↓↙` | Directional compass rotation |
+| bars | `▁▂▃▄▅▆▇█▇▆▅▄▃▁` | Vertical block fill wave |
+| bounce | `⠁⠂⠄⡀⠄⠂` | Braille dot bouncing vertically |
+| braille | `⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏` | Classic braille dot spinner |
+| circle | `◐◓◑◒` | Half-filled circle rotation |
+| classic | `-\|/` | ASCII line rotation |
+| dots | `⠈⠀⠁⠀` | Minimal braille blink |
+| orbit | `⠁⠈⠐⠠⢀⡀⠄⠂` | Single dot circling braille grid |
+| pipe | `┤┘┴└├┌┬┐` | Box drawing corner rotation |
+| pulse | `◡⊙◠` | Pulsing lens |
+| quarters | `▖▘▝▗` | Quarter block rotation |
+| triangles | `◢◣◤◥` | Triangle rotation |
 
 ### Bullets
 
