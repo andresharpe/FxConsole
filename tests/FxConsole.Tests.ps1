@@ -32,6 +32,8 @@ Describe 'Module Loading' {
         $commands | Should -Contain 'Write-FxPanel'
         $commands | Should -Contain 'Write-FxTable'
         $commands | Should -Contain 'Write-FxGrid'
+        $commands | Should -Contain 'Write-FxProgress'
+        $commands | Should -Contain 'Invoke-FxProgress'
         $commands | Should -Contain 'Invoke-FxScript'
     }
 

@@ -55,6 +55,15 @@ function Show-Demo {
         "$(Format-Fx 'DISK:' Muted) $(Format-Fx '91%' Error)"
     )
 
+    # Progress bar
+    Write-FxBlankLine
+    1..20 | ForEach-Object {
+        Write-FxProgress -Activity 'Building' -Percent ($_ * 5) -Status "$_ of 20 modules"
+        Start-Sleep -Milliseconds 40
+    }
+    Write-FxProgress -Activity 'Building' -Complete
+    Write-FxStep 'Build complete' -Done
+
     # Card
     Write-FxBlankLine
     Write-FxCard 'Status' -Width 42 -Lines @(

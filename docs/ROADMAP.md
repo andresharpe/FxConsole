@@ -43,38 +43,12 @@ What ships today.
 
 ---
 
-## v1.2 - Progress Bars
+## v1.2 - Progress Bars (Done)
 
-PowerShell's `Write-Progress` is buggy, accumulates on screen, and doesn't work in Azure Automation runbooks. This replaces it.
-
-### Write-FxProgress
-
-```powershell
-# Simple determinate progress
-1..100 | ForEach-Object {
-    Write-FxProgress -Activity 'Downloading' -Percent $_ -Status "$_ of 100 files"
-    Start-Sleep -Milliseconds 50
-}
-Write-FxProgress -Activity 'Downloading' -Complete
-```
-
-- Themed progress bar with filled/empty block characters
-- Percentage display
-- Elapsed time and estimated remaining time
-- Speed calculation (items/sec, bytes/sec)
-- Multiple concurrent progress bars (stacked, no accumulation)
-- `-Complete` switch for clean finish
-- Auto-hides when complete (no ghost progress bars)
-
-### Invoke-FxProgress
-
-Pipeline-aware progress wrapper.
-
-```powershell
-$items | Invoke-FxProgress -Activity 'Processing' -ScriptBlock {
-    # process each item
-}
-```
+- [x] `Write-FxProgress` — themed progress bar with filled/empty blocks, percentage, elapsed time, ETA, custom bar/track colors, width, status text
+- [x] `Invoke-FxProgress` — pipeline-aware wrapper with automatic progress tracking, scriptblock execution, passthrough output
+- [x] `Invoke-FxScript` suppresses native `Write-Progress` ($ProgressPreference) within the harness
+- [x] Multiple independent activities tracked via per-activity stopwatch timers
 
 ---
 

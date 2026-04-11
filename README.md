@@ -131,11 +131,33 @@ Write-FxGrid -Columns 3 -Items @(
 
 Border styles: `Rounded` (default), `Square`, `Double`, `Heavy`, `Minimal`, `None`
 
+### Progress Bars
+
+| Function | Description |
+|---|---|
+| `Write-FxProgress 'Activity' -Percent 50` | Themed progress bar with elapsed time and ETA |
+| `Write-FxProgress 'Activity' -Complete` | Clear the progress bar line |
+| `1..N \| Invoke-FxProgress 'Activity' -Total N` | Pipeline-aware progress wrapper |
+
+```powershell
+# Simple progress bar with status text
+1..100 | ForEach-Object {
+    Write-FxProgress -Activity 'Downloading' -Percent $_ -Status "$_ of 100 files"
+    Start-Sleep -Milliseconds 50
+}
+Write-FxProgress -Activity 'Downloading' -Complete
+
+# Pipeline progress with scriptblock
+$results = $items | Invoke-FxProgress -Activity 'Processing' -Total $items.Count -ScriptBlock {
+    # process each item, output passes through
+}
+```
+
 ### Harness
 
 | Function | Description |
 |---|---|
-| `Invoke-FxScript { ... }` | Wraps script in UTF-8 + cursor visibility try/finally |
+| `Invoke-FxScript { ... }` | Wraps script in UTF-8 + cursor visibility + suppresses native Write-Progress |
 
 ## Themes
 
