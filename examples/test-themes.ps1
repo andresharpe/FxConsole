@@ -13,7 +13,12 @@ function Show-Demo {
     Set-FxTheme $PresetName
     Write-FxBlankLine
 
-    Write-FxBanner "$(Get-FxPresetName)"
+    # 5-second shimmer spinner
+    $name = Get-FxPresetName
+    Invoke-FxJob $name { Start-Sleep -Seconds 5 }
+    Write-FxStep $name -Done
+
+    Write-FxBanner $name
 
     # Palette
     Write-Fx '  primary    ' Primary -NoNewline;  Write-Fx ' secondary  ' Secondary -NoNewline
