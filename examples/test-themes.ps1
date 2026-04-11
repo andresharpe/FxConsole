@@ -11,14 +11,15 @@ function Show-Demo {
     param([string]$PresetName)
 
     Set-FxTheme $PresetName
+    $name = Get-FxPresetName
     Write-FxBlankLine
 
+    Write-FxBanner $name -Subtitle 'FxConsole Theme Demo'
+
     # 5-second shimmer spinner
-    $name = Get-FxPresetName
     Invoke-FxJob $name { Start-Sleep -Seconds 5 }
     Write-FxStep $name -Done
-
-    Write-FxBanner $name
+    Write-FxBlankLine
 
     # Palette
     Write-Fx '  primary    ' Primary -NoNewline;  Write-Fx ' secondary  ' Secondary -NoNewline
@@ -70,11 +71,27 @@ function Show-Demo {
     Write-FxProgress -Activity 'Building' -Complete
     Write-FxStep 'Build complete' -Done
 
+    # Status messages
+    Write-FxBlankLine
+    Write-FxStatus 'Deployment complete' Success
+    Write-FxStatus 'Monitoring enabled' Info
+    Write-FxStatus 'Cache warm-up pending' Warn
+
     # Card
     Write-FxBlankLine
-    Write-FxCard 'Status' -Width 42 -Lines @(
-        "$(Format-Fx 'Theme:' Muted)   $(Format-Fx (Get-FxPresetName) Primary)"
-        "$(Format-Fx 'Status:' Muted)  $(Format-Fx 'Ready' Success)"
+    Write-FxCard 'Summary' -Width 44 -Lines @(
+        "$(Format-Fx 'Theme:' Muted)    $(Format-Fx $name Primary)"
+        "$(Format-Fx 'Preset:' Muted)   $(Format-Fx $PresetName Secondary)"
+        "$(Format-Fx 'Status:' Muted)   $(Format-Fx 'Ready' Success)"
+        "$(Format-Fx 'Version:' Muted)  $(Format-Fx 'v1.2.0' Info)"
+    )
+
+    # Panel
+    Write-FxBlankLine
+    Write-FxPanel @(
+        (Format-Fx 'Next steps:' Muted)
+        (Format-Fx '  Set-FxTheme amber' Primary)
+        (Format-Fx '  Write-FxTable ...' Primary)
     )
     Write-FxBlankLine
 }
