@@ -80,9 +80,9 @@ function Show-Demo {
     # Card
     Write-FxBlankLine
     Write-FxCard 'Summary' -Width 44 -Lines @(
-        "$(Format-Fx 'Theme:' Muted)    $(Format-Fx $name Primary)"
-        "$(Format-Fx 'Preset:' Muted)   $(Format-Fx $PresetName Secondary)"
-        "$(Format-Fx 'Status:' Muted)   $(Format-Fx 'Ready' Success)"
+        "$(Format-Fx 'Theme:  ' Muted)  $(Format-Fx $name Primary)"
+        "$(Format-Fx 'Preset: ' Muted)  $(Format-Fx $PresetName Secondary)"
+        "$(Format-Fx 'Status: ' Muted)  $(Format-Fx 'Ready' Success)"
         "$(Format-Fx 'Version:' Muted)  $(Format-Fx 'v1.2.0' Info)"
     )
 
