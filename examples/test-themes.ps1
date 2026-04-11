@@ -1,7 +1,8 @@
 # Theme demo — cycles through presets showing spinners, bullets, and styled output
 param(
     [string]$Preset,
-    [switch]$ShowAll
+    [switch]$ShowAll,
+    [switch]$NoGallery
 )
 
 Import-Module "$PSScriptRoot\..\src\FxConsole\FxConsole.psd1" -Force
@@ -85,20 +86,22 @@ Invoke-FxScript {
         if ($Preset) { Show-Demo $Preset } else { Show-Demo 'default' }
     }
 
-    # ── All spinners ──
-    Set-FxTheme default
-    Write-FxBlankLine
-    Write-FxHeader 'Spinner Gallery'
-    foreach ($s in (Get-FxSpinners)) {
-        Write-FxShimmer $s.Id -Frames 25 -Prefix '    ' -Intensity 0.7 -Spinner $s.Id
-        Write-FxStep $s.Id -Prefix '    ' -Done
-    }
+    if (-not $NoGallery) {
+        # ── All spinners ──
+        Set-FxTheme default
+        Write-FxBlankLine
+        Write-FxHeader 'Spinner Gallery'
+        foreach ($s in (Get-FxSpinners)) {
+            Write-FxShimmer $s.Id -Frames 25 -Prefix '    ' -Intensity 0.7 -Spinner $s.Id
+            Write-FxStep $s.Id -Prefix '    ' -Done
+        }
 
-    # ── All bullets ──
-    Write-FxBlankLine
-    Write-FxHeader 'Bullet Gallery'
-    foreach ($b in (Get-FxBullets)) {
-        Write-Fx "    $(Format-Fx $b.Id.PadRight(12) Muted) $(Format-Fx "$($b.Pending) pending" Primary)   $(Format-Fx "$($b.Done) done" Success)   $(Format-Fx "$($b.Sub) sub" Secondary)"
+        # ── All bullets ──
+        Write-FxBlankLine
+        Write-FxHeader 'Bullet Gallery'
+        foreach ($b in (Get-FxBullets)) {
+            Write-Fx "    $(Format-Fx $b.Id.PadRight(12) Muted) $(Format-Fx "$($b.Pending) pending" Primary)   $(Format-Fx "$($b.Done) done" Success)   $(Format-Fx "$($b.Sub) sub" Secondary)"
+        }
     }
 
     Write-FxBlankLine
