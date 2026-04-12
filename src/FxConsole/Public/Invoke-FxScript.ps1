@@ -21,11 +21,14 @@ function Invoke-FxScript {
     $savedProgress = $global:ProgressPreference
     $global:ProgressPreference = 'SilentlyContinue'
 
+    # CursorVisible throws in non-TTY contexts (CI, pwsh -File subprocesses,
+    # redirected output). Swallow the failure — the harness should still run.
+    try { [Console]::CursorVisible = $false } catch {}
+
     try {
-        [Console]::CursorVisible = $false
         & $ScriptBlock
     } finally {
-        [Console]::CursorVisible = $true
+        try { [Console]::CursorVisible = $true } catch {}
         $global:ProgressPreference = $savedProgress
     }
 }
