@@ -351,22 +351,38 @@ Describe 'Structural' {
 Describe 'Invoke-FxScript' {
     BeforeAll {
         Set-FxTheme
-        # Detect whether [Console]::CursorVisible is available (not valid in non-TTY)
+        # Detect whether [Console]::CursorVisible is readable (not in non-TTY)
         $script:canSetCursor = $true
         try { $null = [Console]::CursorVisible } catch { $script:canSetCursor = $false }
     }
 
-    It 'executes the script block' -Skip:(-not $script:canSetCursor) {
+    It 'executes the script block without throwing in any environment' {
         { Invoke-FxScript { 1 + 1 } } | Should -Not -Throw
     }
 
-    It 'restores cursor visibility even on error' -Skip:(-not $script:canSetCursor) {
+    It 'propagates exceptions from the script block' {
+        { Invoke-FxScript { throw 'deliberate' } } | Should -Throw 'deliberate'
+    }
+
+    It 'sets UTF-8 encoding' {
+        Invoke-FxScript { }
+        [Console]::OutputEncoding.WebName | Should -Be 'utf-8'
+    }
+
+    It 'restores cursor visibility on exit (TTY only)' -Skip:(-not $script:canSetCursor) {
         { Invoke-FxScript { throw 'deliberate' } } | Should -Throw 'deliberate'
         [Console]::CursorVisible | Should -Be $true
     }
 
-    It 'sets UTF-8 encoding' -Skip:(-not $script:canSetCursor) {
+    It 'restores $ProgressPreference on exit' {
+        $global:ProgressPreference = 'Continue'
         Invoke-FxScript { }
-        [Console]::OutputEncoding.WebName | Should -Be 'utf-8'
+        $global:ProgressPreference | Should -Be 'Continue'
+    }
+
+    It 'suppresses $ProgressPreference inside the script block' {
+        $global:ProgressPreference = 'Continue'
+        $inside = Invoke-FxScript { $global:ProgressPreference }
+        $inside | Should -Be 'SilentlyContinue'
     }
 }
