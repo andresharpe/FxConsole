@@ -21,8 +21,17 @@ function Invoke-FxJob {
     $pad = [Math]::Min((Get-FxBufferWidth) - 1, $Text.Length + $Prefix.Length + 8)
     $rain = $script:PresetName -eq 'rainbow'
 
+    # Wrap the user's scriptblock so $ProgressPreference is silenced inside the
+    # runspace. Without this, any Invoke-WebRequest / Copy-Item / etc. call in
+    # the job emits native Write-Progress which flickers cursor state underneath
+    # our shimmer. The runspace does not inherit the parent's preference.
+    $wrapped = [scriptblock]::Create(@"
+`$ProgressPreference = 'SilentlyContinue'
+& { $ScriptBlock }
+"@)
+
     $ps = [PowerShell]::Create()
-    [void]$ps.AddScript($ScriptBlock)
+    [void]$ps.AddScript($wrapped)
     $handle = $ps.BeginInvoke()
 
     $f = 0
