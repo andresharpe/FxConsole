@@ -25,8 +25,10 @@ function Invoke-FxJob {
     # runspace. Without this, any Invoke-WebRequest / Copy-Item / etc. call in
     # the job emits native Write-Progress which flickers cursor state underneath
     # our shimmer. The runspace does not inherit the parent's preference.
+    $callerDir = (Get-Location).ProviderPath
     $wrapped = [scriptblock]::Create(@"
 `$ProgressPreference = 'SilentlyContinue'
+Set-Location -LiteralPath '$callerDir'
 & { $ScriptBlock }
 "@)
 
